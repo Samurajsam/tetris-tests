@@ -1,20 +1,27 @@
 from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 def test_controls(driver):
     driver.get("https://tetrisgame-samurajsam.netlify.app/")
-    body = driver.find_element(By.TAG_NAME, "body")
+    wait = WebDriverWait(driver, 10)
 
-    # start
-    body.send_keys(Keys.SPACE)
-    time.sleep(0.5)
+    # Start
+    start_btn = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='start-btn']")))
+    start_btn.click()
 
-    canvas = driver.find_element(By.TAG_NAME, "canvas")
+    board = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".board")))
 
-    before_move = canvas.screenshot_as_png
-    body.send_keys(Keys.ARROW_LEFT)
-    time.sleep(0.3)
-    after_move = canvas.screenshot_as_png
+    before = board.screenshot_as_png
 
-    assert before_move != after_move, "Ruch w lewo nie zadziałał."
+    # klikamy "move left"
+    move_left_btn = wait.until(EC.element_to_be_clickable(
+        (By.CSS_SELECTOR, ".control-btn.left")
+    ))
+    move_left_btn.click()
+
+    time.sleep(0.4)
+    after = board.screenshot_as_png
+
+    assert before != after, "Ruch w lewo nie zadziałał."
