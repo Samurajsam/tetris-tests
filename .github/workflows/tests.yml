@@ -2,7 +2,11 @@ name: Tetris Tests
 
 on:
   push:
+    branches: [ "master" ]
   pull_request:
+    branches: [ "master" ]
+  schedule:
+    - cron: "0 3 * * *"   # codziennie o 03:00
 
 jobs:
   tests:
@@ -25,3 +29,10 @@ jobs:
 
     - name: Run tests
       run: pytest -m "not smoke" --maxfail=1
+
+    - name: Upload screenshots
+      if: always()    # zawsze uploaduj, nawet przy failu
+      uses: actions/upload-artifact@v3
+      with:
+        name: selenium-screenshots
+        path: screenshots/

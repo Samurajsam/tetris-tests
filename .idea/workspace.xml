@@ -5,19 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3cdde986-e30f-4c75-9387-79ca25255661" name="Changes" comment="fixed tests controls.py and start_game.py">
+      <change beforePath="$PROJECT_DIR$/.github/workflows/tests.yml" beforeDir="false" afterPath="$PROJECT_DIR$/.github/workflows/tests.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/base_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/game_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/game_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/home_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/controls/test_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/controls/test_music_toggle.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_music_toggle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tests/controls/test_pause.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_pause.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/controls/test_restart.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_restart.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/controls/test_rotation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_rotation.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/controls/test_speed.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_speed.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/game_state/test_game_over.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_game_over.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/game_state/test_load_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_load_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/game_state/test_start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_start_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/game_state/test_play_again.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_play_again.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,28 +46,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "Python tests.Python tests in test_controls.py.executor": "Run",
-    "Python tests.Python tests in test_game_over.py.executor": "Run",
-    "Python tests.Python tests in test_load_page.py.executor": "Run",
-    "Python tests.Python tests in test_movement.py.executor": "Run",
-    "Python tests.Python tests in test_music_toggle.py.executor": "Run",
-    "Python tests.Python tests in test_pause.py.executor": "Run",
-    "Python tests.Python tests in test_play_again.py.executor": "Run",
-    "Python tests.Python tests in test_restart.py.executor": "Run",
-    "Python tests.Python tests in test_rotation.py.executor": "Run",
-    "Python tests.Python tests in test_score.py.executor": "Run",
-    "Python tests.Python tests in test_speed.py.executor": "Run",
-    "Python tests.Python tests in test_start_game.py.executor": "Run",
-    "Python.game_page.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "git-widget-placeholder": "master"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;Python tests.Python tests in test_controls.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_game_over.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_load_page.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_movement.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_music_toggle.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_pause.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_play_again.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_restart.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_rotation.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_score.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_speed.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python tests.Python tests in test_start_game.py.executor&quot;: &quot;Run&quot;,
+    &quot;Python.game_page.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\gblaz\PycharmProjects\tetris-tests\tests\controls" />
@@ -121,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764605303223</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="fixed tests controls.py and start_game.py">
+      <option name="closed" value="true" />
+      <created>1765401574905</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765401574905</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
