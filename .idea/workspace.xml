@@ -6,11 +6,18 @@
   <component name="ChangeListManager">
     <list default="true" id="3cdde986-e30f-4c75-9387-79ca25255661" name="Changes" comment="fixed tests controls.py and start_game.py">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/conftest.py" beforeDir="false" afterPath="$PROJECT_DIR$/conftest.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_controls.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_movement.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_load_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_load_page.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tests/test_start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_start_game.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/base_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/base_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/game_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/game_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/home_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/pages/home_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_movement.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_movement.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_music_toggle.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_music_toggle.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_pause.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_pause.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_restart.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_restart.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_rotation.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_rotation.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/controls/test_speed.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/controls/test_speed.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/game_state/test_game_over.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_game_over.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/game_state/test_load_page.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_load_page.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tests/game_state/test_start_game.py" beforeDir="false" afterPath="$PROJECT_DIR$/tests/game_state/test_start_game.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,10 +63,13 @@
     "Python tests.Python tests in test_movement.py.executor": "Run",
     "Python tests.Python tests in test_music_toggle.py.executor": "Run",
     "Python tests.Python tests in test_pause.py.executor": "Run",
+    "Python tests.Python tests in test_play_again.py.executor": "Run",
     "Python tests.Python tests in test_restart.py.executor": "Run",
     "Python tests.Python tests in test_rotation.py.executor": "Run",
+    "Python tests.Python tests in test_score.py.executor": "Run",
     "Python tests.Python tests in test_speed.py.executor": "Run",
     "Python tests.Python tests in test_start_game.py.executor": "Run",
+    "Python.game_page.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -103,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764253232766</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="fixed tests controls.py and start_game.py">
+      <option name="closed" value="true" />
+      <created>1764605303223</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1764605303223</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

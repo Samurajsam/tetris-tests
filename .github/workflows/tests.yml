@@ -1,0 +1,27 @@
+name: Tetris Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v3
+
+    - name: Install Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.13.9'
+
+    - name: Install dependencies
+      run: |
+        pip install -r requirements.txt
+
+    - name: Install GeckoDriver
+      uses: browser-actions/setup-geckodriver@latest
+
+    - name: Run tests
+      run: pytest -m "not smoke" --maxfail=1

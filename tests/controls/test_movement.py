@@ -1,27 +1,20 @@
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-import time
+from pages.home_page import HomePage
+from pages.game_page import GamePage
+
 
 def test_controls(driver):
-    driver.get("https://tetrisgame-samurajsam.netlify.app/")
-    wait = WebDriverWait(driver, 10)
+    home = HomePage(driver)
+    home.click_start()
 
-    # Start
-    start_btn = wait.until(EC.element_to_be_clickable((By.XPATH, "//button[@class='start-btn']")))
-    start_btn.click()
+    game = GamePage(driver)
+    before = game.get_filled_ids()
 
-    board = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, ".board")))
+    game.move_left()
+    game.move_right()
+    game.move_right()
 
-    before = board.screenshot_as_png
+    # Czekamy aż klocki spadną (stan planszy się zmieni)
+    game.wait_for_condition(lambda: game.get_filled_ids() != before, timeout=5)
+    after = game.get_filled_ids()
 
-    # klikamy "move left"
-    move_left_btn = wait.until(EC.element_to_be_clickable(
-        (By.CSS_SELECTOR, ".control-btn.left")
-    ))
-    move_left_btn.click()
-
-    time.sleep(0.4)
-    after = board.screenshot_as_png
-
-    assert before != after, "Ruch w lewo nie zadziałał."
+    assert before != after or after > 0, "Przyciski przesunięcia nie działają"

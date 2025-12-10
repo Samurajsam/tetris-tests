@@ -18,6 +18,9 @@ class GamePage(BasePage):
     GAME_OVER_OVERLAY = (By.CSS_SELECTOR, ".gameover")
     PLAY_AGAIN_BTN = (By.CSS_SELECTOR, ".play-again-btn")
 
+    # wynik
+    SCORE = (By.CSS_SELECTOR, ".score")
+
     # plansza
     FILLED_CELLS = (By.CSS_SELECTOR, ".board .cell.filled")
     ALL_CELLS = (By.CSS_SELECTOR, ".board .cell")
@@ -28,6 +31,11 @@ class GamePage(BasePage):
     def get_filled_ids(self):
         cells = self.find_all(self.ALL_CELLS)
         return {index for index, cell in enumerate(cells) if "filled" in cell.get_attribute("class")}
+
+    def get_score(self):
+        text = self.find(self.SCORE).text  # np. "Score: 0"
+        digits = "".join(ch for ch in text if ch.isdigit())
+        return int(digits) if digits else 0
 
     def rotate(self):
         self.click(self.ROTATE_BTN)
@@ -60,3 +68,7 @@ class GamePage(BasePage):
 
     def wait_for_game_over(self):
         return self.find(self.GAME_OVER_OVERLAY)
+
+    def play_again(self):
+        self.click(self.PLAY_AGAIN_BTN)
+        time.sleep(0.2)

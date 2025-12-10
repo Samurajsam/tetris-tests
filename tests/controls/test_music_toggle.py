@@ -7,6 +7,12 @@ def test_music_toggle(driver):
     home.click_start()
 
     game = GamePage(driver)
+    
+    # Klikamy przycisk muzyki kilka razy (włącz/wyłącz)
+    game.toggle_music()
+    game.toggle_music()
     game.toggle_music()
 
-    assert True  # brak możliwości odczytu audio, ale test klika poprawnie
+    # Brak możliwości odczytu stanu audio w Selenium,
+    # ale test weryfikuje że przycisk jest klikalny i nie powoduje błędów
+    assert True

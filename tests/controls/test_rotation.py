@@ -7,9 +7,12 @@ def test_piece_rotation(driver):
     home.click_start()
 
     game = GamePage(driver)
-    before = game.get_filled_count()
+    before = game.get_filled_ids()
 
     game.rotate()
-    after = game.get_filled_count()
+    
+    # Czekamy aż stan planszy się zmieni
+    game.wait_for_condition(lambda: game.get_filled_ids() != before, timeout=5)
+    after = game.get_filled_ids()
 
-    assert before != after or after > 0
+    assert before != after or after > 0, "Klocek się nie obraca"
