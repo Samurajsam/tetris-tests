@@ -1,8 +1,10 @@
+import pytest
 from pages.home_page import HomePage
 from pages.game_page import GamePage
 from selenium.common.exceptions import TimeoutException
 
-
+@pytest.mark.regression
+@pytest.mark.game_state
 def test_game_over(driver):
     home = HomePage(driver)
     home.click_start()

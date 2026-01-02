@@ -1,8 +1,10 @@
+import pytest
 from pages.home_page import HomePage
 from pages.game_page import GamePage
 import time
 
-
+@pytest.mark.regression
+@pytest.mark.controls
 def test_game_pause(driver):
     home = HomePage(driver)
     home.click_start()

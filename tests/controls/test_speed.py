@@ -1,7 +1,9 @@
+import pytest
 from pages.home_page import HomePage
 from pages.game_page import GamePage
 
-
+@pytest.mark.regression
+@pytest.mark.controls
 def test_speed_down(driver):
     home = HomePage(driver)
     home.click_start()
