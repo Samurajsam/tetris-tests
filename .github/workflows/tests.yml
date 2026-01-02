@@ -36,3 +36,45 @@ jobs:
       with:
         name: selenium-screenshots
         path: screenshots/
+
+    - name: Run tests with Allure
+      run: pytest --allure-dir=allure-results
+
+    - name: Upload Allure results
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-results
+        path: allure-results/
+
+    - name: Generate Allure report
+      run: |
+          allure generate allure-results -o allure-report --clean
+
+    - name: Upload Allure HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: allure-report
+        path: allure-report/
+
+    - name: Generate HTML report
+      run: pytest --html=report.html --self-contained-html
+
+    - name: Upload HTML report
+      uses: actions/upload-artifact@v3
+      with:
+        name: html-report
+        path: report.html
+
+    - name: Send email notification on failure
+      if: failure()
+      uses: dawidd6/action-send-mail@v3
+      with:
+          server_address: smtp.gmail.com
+          server_port: 465
+          username: ${{ secrets.SMTP_USER }}
+          password: ${{ secrets.SMTP_PASS }}
+          subject: "Tetris Tests FAILED"
+          to: "gblazusiak@gmail.com"
+          from: "tetris-ci@domena.com"
+          body: "Testy E2E dla Tetrisa zakończyły się błędem. Sprawdź artefakty."
+          attachments: "screenshots/*.png"

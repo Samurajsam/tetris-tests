@@ -1,5 +1,6 @@
 import pytest
 from utils.driver_factory import create_driver
+import allure
 import config
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -24,23 +25,23 @@ def driver():
 
 @pytest.hookimpl(tryfirst=True, hookwrapper=True)
 def pytest_runtest_makereport(item, call):
-    # jest to "yield" które pozwala pytest działać dalej
     outcome = yield
     result = outcome.get_result()
 
-    # robimy screen TYLKO przy failu
     if result.failed and "driver" in item.fixturenames:
         driver = item.funcargs["driver"]
 
-        # katalog na screenshoty
         os.makedirs("screenshots", exist_ok=True)
 
         timestamp = datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
-        test_name = item.name.replace("/", "_")
-        filename = f"screenshots/{test_name}_{timestamp}.png"
+        filename = f"screenshots/{item.name}_{timestamp}.png"
 
         driver.save_screenshot(filename)
 
-        # dodajemy screenshot do raportu GitHub Actions jako artefakt
-        if os.getenv("GITHUB_ACTIONS") == "true":
-            print(f"::warning file={filename},line=1,col=1::Screenshot saved: {filename}")
+        # 🔥 KLUCZOWE – załączenie do Allure
+        with open(filename, "rb") as image:
+            allure.attach(
+                image.read(),
+                name="Screenshot on failure",
+                attachment_type=allure.attachment_type.PNG
+            )

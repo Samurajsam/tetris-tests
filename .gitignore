@@ -1,0 +1,10 @@
+# Allure
+allure-results/
+allure-report/
+
+# Screenshots
+screenshots/
+
+# Python
+__pycache__/
+.venv/
