@@ -13,68 +13,73 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
+    - uses: actions/checkout@v4
 
-    - name: Install Python
-      uses: actions/setup-python@v4
+    - name: Set up Python
+      uses: actions/setup-python@v5
       with:
-        python-version: '3.13.9'
+#        python-version: '3.13.9'
+        python-version: '3.11'
 
     - name: Install dependencies
       run: |
+        pip install --upgrade pip
         pip install -r requirements.txt
 
+    - name: Install Firefox
+      uses: browser-actions/setup-firefox@v1
+
     - name: Install GeckoDriver
-      uses: browser-actions/setup-geckodriver@latest
+      uses: browser-actions/setup-geckodriver@v0.0.0
 
     - name: Run tests
-      run: pytest -m "not smoke" --maxfail=1
+      run: |
+        if [ "${{ github.event_name }}" = "pull_request" ]; then
+          pytest -m smoke --alluredir=allure-results
+        else
+          pytest -m "not smoke" --alluredir=allure-results
+        fi
 
     - name: Upload screenshots
-      if: always()    # zawsze uploaduj, nawet przy failu
-      uses: actions/upload-artifact@v3
+      if: always()
+      uses: actions/upload-artifact@v4
       with:
         name: selenium-screenshots
         path: screenshots/
 
-    - name: Run tests with Allure
-      run: pytest --allure-dir=allure-results
-
     - name: Upload Allure results
-      uses: actions/upload-artifact@v3
+      if: always()
+      uses: actions/upload-artifact@v4
       with:
         name: allure-results
         path: allure-results/
 
     - name: Generate Allure report
-      run: |
-          allure generate allure-results -o allure-report --clean
+      if: always()
+      uses: simple-elf/allure-report-action@v1
+      with:
+        allure_results: allure-results
+        allure_report: allure-report
 
     - name: Upload Allure HTML report
-      uses: actions/upload-artifact@v3
+      if: always()
+      uses: actions/upload-artifact@v4
       with:
         name: allure-report
         path: allure-report/
 
-    - name: Generate HTML report
-      run: pytest --html=report.html --self-contained-html
-
-    - name: Upload HTML report
-      uses: actions/upload-artifact@v3
-      with:
-        name: html-report
-        path: report.html
-
-    - name: Send email notification on failure
+    - name: Send email on failure
       if: failure()
       uses: dawidd6/action-send-mail@v3
       with:
-          server_address: smtp.gmail.com
-          server_port: 465
-          username: ${{ secrets.SMTP_USER }}
-          password: ${{ secrets.SMTP_PASS }}
-          subject: "Tetris Tests FAILED"
-          to: "gblazusiak@gmail.com"
-          from: "tetris-ci@domena.com"
-          body: "Testy E2E dla Tetrisa zakończyły się błędem. Sprawdź artefakty."
-          attachments: "screenshots/*.png"
+        server_address: smtp.gmail.com
+        server_port: 587
+        username: ${{ secrets.SMTP_USER }}
+        password: ${{ secrets.SMTP_PASS }}
+        subject: "❌ Tetris tests FAILED"
+        to: "gblazusiak@gmail.com"
+        from: "GitHub Actions"
+        body: |
+          Testy E2E Tetris zakończyły się błędem.
+          Repo: ${{ github.repository }}
+          Run: ${{ github.run_url }}
