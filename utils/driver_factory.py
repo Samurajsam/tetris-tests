@@ -1,15 +1,27 @@
+import os
+
 from selenium import webdriver
-from webdriver_manager.firefox import GeckoDriverManager
-from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.options import Options as FirefoxOptions
+from selenium.webdriver.chrome.options import Options as ChromeOptions
+from selenium.webdriver.chrome.service import Service as ChromeService
 
 
-def create_driver(browser_name="firefox"):
+def _is_ci() -> bool:
+    return os.getenv("CI", "").lower() in {"1", "true"} or os.getenv("GITHUB_ACTIONS") == "true"
+
+
+def create_driver(browser_name: str = "firefox"):
     if browser_name == "firefox":
-        return webdriver.Firefox()
+        options = FirefoxOptions()
+        if _is_ci():
+            options.add_argument("--headless")
+        return webdriver.Firefox(options=options)
 
     if browser_name == "chrome":
-        from selenium.webdriver.chrome.service import Service
-        service = Service(ChromeDriverManager().install())
-        return webdriver.Chrome(service=service)
+        options = ChromeOptions()
+        if _is_ci():
+            options.add_argument("--headless=new")
+        service = ChromeService()
+        return webdriver.Chrome(service=service, options=options)
 
     raise ValueError(f"Unknown browser: {browser_name}")
