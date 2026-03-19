@@ -96,4 +96,4 @@ jobs:
         body: |
           Testy E2E Tetris zakończyły się błędem.
           Repo: ${{ github.repository }}
-          Run: ${{ github.run_url }}
+          Run: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
