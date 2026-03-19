@@ -33,11 +33,13 @@ jobs:
       uses: browser-actions/setup-geckodriver@v0.0.0
 
     - name: Run tests
+      shell: bash
       run: |
         if [ "${{ github.event_name }}" = "pull_request" ]; then
           pytest -m smoke --alluredir=allure-results
         else
           pytest -m "not smoke" --alluredir=allure-results
+        fi
 
     - name: Upload screenshots
       if: always()
